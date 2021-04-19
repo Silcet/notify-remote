@@ -2,8 +2,10 @@ use crate::{notify_remote::*, notify_remote_grpc::*};
 
 use grpc::{ServerHandlerContext, ServerRequestSingle, ServerResponseUnarySink};
 
+use notify_rust::Notification;
+
 #[derive(Default)]
-pub struct NotifierImpl;
+pub struct NotifierImpl {}
 
 impl NotifierImpl {
     pub fn new() -> NotifierImpl {
@@ -20,6 +22,14 @@ impl Notifier for NotifierImpl {
     ) -> grpc::Result<()> {
         let mut r = NotificationReply::new();
         let message = req.message.get_message();
+
+        Notification::new()
+            .summary(message)
+            .body("This will almost look like a real firefox notification.")
+            .icon("firefox")
+            .show()
+            .unwrap();
+
         println!("Got message: {}", message);
         if message.len() > 10 {
             r.set_return_code(1);

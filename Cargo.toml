@@ -12,6 +12,7 @@ grpc-protobuf = "0.8.3"
 protobuf = "~2.18.2"
 futures = "0.3"
 env_logger = "0.4"
+notify-rust = "4.3"
 
 [build-dependencies]
 protoc-rust-grpc = "0.8.3"
