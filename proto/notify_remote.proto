@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package notify_remote;
+
+service Notifier {
+    rpc Notify (NotificationRequest) returns (NotificationReply) {}
+}
+
+message NotificationRequest {
+    string message = 1;
+}
+
+message NotificationReply {
+    uint32 return_code = 1;
+    string error = 2;
+}

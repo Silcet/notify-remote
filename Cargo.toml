@@ -7,3 +7,17 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+grpc = "0.8.3"
+grpc-protobuf = "0.8.3"
+protobuf = "~2.18.2"
+futures = "0.3"
+env_logger = "0.4"
+
+[build-dependencies]
+protoc-rust-grpc = "0.8.3"
+
+[[bin]]
+name = "notify_remote_server"
+
+[[bin]]
+name = "notify_remote_client"
