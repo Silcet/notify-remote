@@ -20,7 +20,7 @@ local_ipaddress = "0.1.3"
 protoc-rust-grpc = "0.8.3"
 
 [[bin]]
-name = "notify_remote_server"
+name = "notify-remote-server"
 
 [[bin]]
-name = "notify_remote_client"
+name = "notify-remote"
