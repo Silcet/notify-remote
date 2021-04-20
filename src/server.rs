@@ -21,23 +21,19 @@ impl Notifier for NotifierImpl {
         resp: ServerResponseUnarySink<NotificationReply>,
     ) -> grpc::Result<()> {
         let mut r = NotificationReply::new();
-        let message = req.message.get_message();
+        let summary = req.message.get_summary();
+        let body = req.message.get_body();
 
-        Notification::new()
-            .summary(message)
-            .body("This will almost look like a real firefox notification.")
-            .icon("firefox")
-            .show()
-            .unwrap();
+        println!("Got notification: {}, {}", summary, body);
 
-        println!("Got message: {}", message);
-        if message.len() > 10 {
-            r.set_return_code(1);
-            r.set_error("Message is too long".to_string());
-        } else {
-            r.set_return_code(0);
-            r.set_error("".to_string());
+        match Notification::new().summary(summary).body(body).show() {
+            Ok(_) => r.set_return_code(0),
+            Err(e) => {
+                r.set_return_code(1);
+                r.set_error(e.to_string());
+            }
         }
+
         resp.finish(r)
     }
 }
