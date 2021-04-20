@@ -40,5 +40,6 @@ needed.
 
 
 ## TODO
+- [ ] Add tests
 - [ ] Add more fileds to the notification (relevance, icon, etc..)
 - [ ] Add authentication
