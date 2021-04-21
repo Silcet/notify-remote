@@ -6,7 +6,11 @@ This project contains both the server and client scripts
 needed.
 
 ## Getting started
-0. [Install Rust](https://www.rust-lang.org/tools/install)
+0. Install dependencies:
+
+    0.1. [Install Rust](https://www.rust-lang.org/tools/install)
+
+    0.2. [Install protobuf compiler](), needed by the grpc-protobuf crate
 
 1. Clone, build and install the project (❤️ cargo):
     
@@ -43,3 +47,4 @@ needed.
 - [ ] Add tests
 - [ ] Add more fileds to the notification (relevance, icon, etc..)
 - [ ] Add authentication
+- [ ] Handle notification errors without panic
